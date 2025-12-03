@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AR Cybersecurity — Demo</title>
+  <style>
+    body { margin:0; background:#000; color:#fff; font-family: sans-serif; }
+    #video { width:100%; height:100vh; object-fit:cover; }
+    .overlay { position: absolute; top: 10px; left: 10px; color: #0f0; background: rgba(0,0,0,0.4); padding: 6px; border-radius: 4px;}
+  </style>
+</head>
+<body>
+  <div class="overlay">AR Cybersecurity Demo — camera feed below</div>
+  <video id="video" autoplay playsinline></video>
+
+  <script>
+    async function startCamera() {
+      try {
+        const constraints = { audio: false, video: { facingMode: "environment" } };
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        const video = document.getElementById('video');
+        video.srcObject = stream;
+        video.onloadedmetadata = () => video.play();
+      } catch (e) {
+        document.body.innerHTML = '<div style="color:orange;padding:20px">Camera not available: ' + e.message + '</div>';
+      }
+    }
+    // Try to start camera on load
+    window.onload = startCamera;
+  </script>
+</body>
+</html>
