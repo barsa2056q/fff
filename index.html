@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>AR Cybersecurity — Обучение</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.1/aframe/build/aframe-ar.min.js"></script>
+</head>
+<body>
+  <header class="banner">AR Cybersecurity — Обучающее приложение</header>
+  <main>
+    <p class="hint">Наведи камеру на Hiro-маркeр (пример: https://jeromeetienne.github.io/AR.js/three.js/examples/marker-training/examples/generator.html) или распечатай маркер.</p>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+      <a-marker preset="hiro" id="marker">
+        <a-entity id="card" position="0 0 0" rotation="-90 0 0">
+          <a-plane id="panel" color="#0b3d91" width="1.6" height="1.0" position="0 0.7 0.01" material="opacity:0.95"></a-plane>
+          <a-text id="title" value="Cybersecurity 101" align="center" color="#fff" width="1.4" position="0 1.05 0.02"></a-text>
+          <a-text id="body" value="Наведи камеру на маркер, чтобы начать. Краньте экран, чтобы переключать темы." align="center" color="#e6f0ff" width="1.4" position="0 0.85 0.02"></a-text>
+          <a-box id="icon" position="0 0.3 0" depth="0.05" height="0.35" width="0.35" color="#ffcc00" rotation="0 45 0"></a-box>
+        </a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
